@@ -1,0 +1,69 @@
+📝 Git Cheat Sheet (Ubuntu + GitHub, SSH Only)
+
+🚀 Initial Setup (one time per system)
+--------------------------------------
+# Install Git
+sudo apt update && sudo apt install git
+
+# Set your identity
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Make SSH default for GitHub
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+
+📂 Start a New Repo
+-------------------
+cd /path/to/project
+git init                    # Create local git repo
+git add .                   # Stage all files
+git commit -m "Initial commit"  # Save snapshot
+git branch -M main          # Rename branch to 'main' (optional)
+
+# Add GitHub remote (SSH version)
+git remote add origin git@github.com:username/repo.git
+
+# Push to GitHub
+git push -u origin main
+
+⬇ Clone an Existing Repo
+-------------------------
+git clone git@github.com:username/repo.git
+
+💾 Common Commands
+------------------
+Check repo status          : git status
+Stage changes              : git add .
+Commit changes             : git commit -m "message"
+See commit history         : git log --oneline --graph --all
+Push changes               : git push
+Pull latest changes        : git pull
+
+🌿 Branching
+------------
+git branch                   # List branches
+git branch new-branch        # Create a branch
+git checkout new-branch      # Switch to branch
+git checkout -b new-branch   # Create & switch
+git merge other-branch       # Merge into current branch
+
+🔥 Undo & Fix
+-------------
+git checkout -- file         # Undo changes in file
+git reset HEAD~1             # Undo last commit (keep changes)
+git reset --hard HEAD~1      # Undo last commit (discard changes)
+
+🛠 SSH Tips
+-----------
+Check keys: ls ~/.ssh
+Add key to agent:
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_ed25519
+
+Test GitHub SSH:
+  ssh -T git@github.com
+
+📦 Global Config
+----------------
+View config: git config --list
+Edit config: nano ~/.gitconfig
